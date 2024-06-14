@@ -11,6 +11,7 @@ const userSchema = new Schema({
         trim:true,
         index:true,
     }, 
+
     email:{
         type: String,
         required:true,
@@ -18,30 +19,37 @@ const userSchema = new Schema({
         lowercase :true,
         trim:true,
     },
+
     Fullname:{
         type: String,
         required:true,
         trim:true,
         index:true,
     },
+
     avatar:{
         type: String, //cloudinary url
         required: true,
     },
+
     coverImage:{
         type: String,
     },
+
     watcchHistory:{
         type: Schema.Types.ObjectId,
         ref:"Video"
     },
+
     password:{
         type: String,
         required:[true,'Passowrd is reuired']
     },
+
     refreshToken:{
         type: String,
     },
+    
 },{timestamps:true})
 
 userSchema.pre("save", async function (next) {
@@ -83,5 +91,3 @@ userSchema.methods.generateRefreshToken = function(){
 
 export const User = mongoose.model("User",userSchema);
 
-
-  
