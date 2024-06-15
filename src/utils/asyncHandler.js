@@ -1,10 +1,13 @@
 const asyncHandler = (requestHandler) => {
-    (req,res,next) =>{
-        Promise.resolve(requestHandler(req,res,next)).catch((err) => next(err))
+    return (req, res, next) => {
+        Promise.resolve(requestHandler(req, res, next)).catch((err) => next(err))
     }
 }
+
+export { asyncHandler }
  
-export {asyncHandler}
+
+// hmne asynchandler toh bnaya hai , accept kiya hai ekk method (requestHandler) , yeh method vapis return bhi krna hoga , as a function usse accept kru as a function hi usse return kr du
 
 
 // const asyncHandler = (fn) => async (req,res,next) {
